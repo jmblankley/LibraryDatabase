@@ -12,7 +12,7 @@ PURPOSE: Main file for Library Database project.
 
 using namespace std;
 
-// Method: addBook
+// Function: addBook
 // Parameters: none
 // Purpose: Add book information to specified file
 void addBook()
@@ -34,7 +34,7 @@ void addBook()
     return;
 };
 
-// Method: addLibrary
+// Function: addLibrary
 // Parameters: none
 // Purpose: Add library information to specified file
 void addLibrary()
@@ -55,7 +55,7 @@ void addLibrary()
     return;
 };
 
-// Method: addHolding
+// Function: addHolding
 // Parameters: none
 // Purpose: Add holding information to specified file
 void addHolding()
@@ -74,7 +74,7 @@ void addHolding()
     return;
 };
 
-// Method: listBooks
+// Function: listBooks
 // Parameters: none
 // Purpose: List the books into the console from the books.txt file
 void listBooks()
@@ -89,7 +89,7 @@ void listBooks()
     return;
 };
 
-// Method: listLibraries
+// Function: listLibraries
 // Parameters: none
 // Purpose: List the libraries into the console from the libraries.txt file
 void listLibraries()
@@ -105,7 +105,7 @@ void listLibraries()
     return;
 };
 
-// Method: findBooks
+// Function: findBooks
 // Parameters: ISBN
 // Purpose: Find the books in the holdings.txt by the ISBN number
 void findBooks(string ISBN)
@@ -127,7 +127,7 @@ void findBooks(string ISBN)
     return;
 };
 
-// Method: userInput
+// Function: userInput
 // Parameters: none
 // Purpose: Take in user input and navigate to other functions depending on the input
 void userInput()

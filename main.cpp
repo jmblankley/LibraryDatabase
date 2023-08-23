@@ -5,6 +5,8 @@ DATE: 8/22/2023
 PURPOSE: Main file for Library Database project.
 */
 #include "Book.hpp"
+#include "Library.hpp"
+#include "Holding.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -21,9 +23,12 @@ void addBook()
     string title;
 
     cin >> ISBN >> year >> author >> title;
+
+    Book book(ISBN, year, author, title);
+
     ofstream booksFile;
     booksFile.open("books.txt", ios::app);
-    booksFile << ISBN << " " << year << " " << author << " " << title << endl;
+    booksFile << book;
     booksFile.close();
 
     return;
@@ -39,9 +44,12 @@ void addLibrary()
     int zip;
 
     cin >> name >> city >> zip;
+
+    Library library(name, city, zip);
+
     ofstream libraryFile;
     libraryFile.open("libraries.txt", ios::app);
-    libraryFile << name << " " << city << " " << zip << endl;
+    libraryFile << library;
     libraryFile.close();
 
     return;
@@ -56,9 +64,11 @@ void addHolding()
     string library;
 
     cin >> ISBN >> library;
+    Holding holding(ISBN, library);
+
     ofstream holdingFile;
     holdingFile.open("holdings.txt", ios::app);
-    holdingFile << ISBN << " " << library << endl;
+    holdingFile << holding;
     holdingFile.close();
 
     return;
@@ -96,9 +106,26 @@ void listLibraries()
 };
 
 // Method: findBooks
-// Parameters: none
+// Parameters: ISBN
 // Purpose: Find the books in the holdings.txt by the ISBN number
-void findBooks() { return; };
+void findBooks(string ISBN)
+{
+    // cout << ISBN << endl; // debugging line
+
+    ifstream holdings;
+    holdings.open("holdings.txt");
+    string booksHeld;
+    while (getline(holdings, booksHeld))
+    {
+        // cout << booksHeld << endl; // debugging line
+        if (booksHeld == ISBN) // Need to figure out how to compare only the ISBN number on the line and not the whole file.
+        {
+            cout << booksHeld;
+        }
+    }
+
+    return;
+};
 
 // Method: userInput
 // Parameters: none
@@ -149,7 +176,8 @@ void userInput()
     }
     if (firstSelector == "f")
     {
-        findBooks();
+        cin >> secondSelector;
+        findBooks(secondSelector);
     }
     userInput();
 }

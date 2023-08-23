@@ -118,9 +118,9 @@ void findBooks(string ISBN)
     while (getline(holdings, booksHeld))
     {
         // cout << booksHeld << endl; // debugging line
-        if (booksHeld == ISBN) // Need to figure out how to compare only the ISBN number on the line and not the whole file.
+        if (!booksHeld.find(ISBN)) // Need to figure out how to compare only the ISBN number on the line and not the whole file.
         {
-            cout << booksHeld;
+            cout << booksHeld << endl;
         }
     }
 

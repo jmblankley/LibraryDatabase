@@ -62,9 +62,10 @@ void addHolding()
 {
     string ISBN;
     string library;
+    int copyCount;
 
     cin >> ISBN >> library;
-    Holding holding(ISBN, library);
+    Holding holding(ISBN, library, copyCount);
 
     ofstream holdingFile;
     holdingFile.open("holdings.txt", ios::app);

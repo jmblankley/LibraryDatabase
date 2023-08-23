@@ -17,6 +17,7 @@ class Holding
 private:
     string _ISBN;
     string _name;
+    int _copyCount;
 
 public:
     // Default Contructor Method for Holding Class
@@ -26,15 +27,17 @@ public:
     {
         _ISBN = "";
         _name = "";
+        _copyCount = 0;
     }
 
     // Constructor of Holding Class
     // Parameters: ISBN number, and library name
     // Purpose: Initializes a new holding with variables passed in
-    Holding(string newISBN, string newName)
+    Holding(string newISBN, string newName, int newCopyCount)
     {
         _ISBN = newISBN;
         _name = newName;
+        _copyCount = newCopyCount;
     }
 
     // Operator Overload: <<

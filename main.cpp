@@ -63,8 +63,41 @@ void addHolding()
 
     return;
 };
-void listBooks() { return; };
-void listLibraries() { return; };
+
+// Method: listBooks
+// Parameters: none
+// Purpose: List the books into the console from the books.txt file
+void listBooks()
+{
+    ifstream books;
+    books.open("books.txt");
+    string bookInfo;
+    while (getline(books, bookInfo))
+    {
+        cout << bookInfo << "\n";
+    }
+    return;
+};
+
+// Method: listLibraries
+// Parameters: none
+// Purpose: List the libraries into the console from the libraries.txt file
+void listLibraries()
+{
+    ifstream libraries;
+    libraries.open("libraries.txt");
+    string libraryInfo;
+    while (getline(libraries, libraryInfo))
+    {
+        cout << libraryInfo << "\n";
+    }
+
+    return;
+};
+
+// Method: findBooks
+// Parameters: none
+// Purpose: Find the books in the holdings.txt by the ISBN number
 void findBooks() { return; };
 
 // Method: userInput
@@ -104,6 +137,7 @@ void userInput()
     }
     if (firstSelector == "l")
     {
+        cin >> secondSelector;
         if (secondSelector == "b")
         {
             listBooks();

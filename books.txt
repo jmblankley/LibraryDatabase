@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 123455 1999 Blankley Test
 1234 2000 Blankley Test2
 12345 2001 Blankley Test3
 123456 2002 Blankley Test4
 123455 1999 Blankley Test5
 1234 2004 Blankley Test6
+=======
+1234 2000 Blankley Test1
+4321 2000 Blankley Test2
+>>>>>>> 9c4d1a4 (took out unrealted methods from BookList)

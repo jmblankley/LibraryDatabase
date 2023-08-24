@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+<<<<<<< HEAD
 // Method: findByISBN
 // Parameters: int (isbn number of boook)
 // Purpose: Return nothing.
@@ -22,6 +23,8 @@ void BookList::addByISBN(string isbnInput, string libraryName, int copyNumber)
     }
 }
 
+=======
+>>>>>>> 9c4d1a4 (took out unrealted methods from BookList)
 // Operator Overlead: +=
 //  Parameters: Book
 //  Purpose: Return a copy of the updated Fleet as efficiently as possible

@@ -61,7 +61,7 @@ void addLibrary()
 // Function: addHolding
 // Parameters: none
 // Purpose: Add holding information to specified file
-void addHolding()
+/*void addHolding()
 {
     Book pulledBook;
     string library;
@@ -76,7 +76,7 @@ void addHolding()
     BookList bookList(books, library, copyNumber);
 
     bookList.addByISBN(ISBN, library, copyNumber);
-};
+};*/
 
 // Function: listBooks
 // Parameters: none
@@ -164,7 +164,7 @@ void userInput()
         }
         else if (secondSelector == "h")
         {
-            addHolding();
+            // addHolding();
         }
         else
         {

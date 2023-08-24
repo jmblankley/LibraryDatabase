@@ -89,12 +89,17 @@ void listBooks()
     cout << booklist;
 };
 
+// Unneccessary function for testing.
 void listHoldings()
 {
-    ifstream getBooks("holdings.txt");
-    BookList holdinglist(getBooks);
-
-    cout << holdinglist;
+    ifstream getHoldings;
+    getHoldings.open("holdings.txt");
+    string holdingInfo;
+    while (getline(getHoldings, holdingInfo))
+    {
+        cout << holdingInfo << endl;
+    }
+    return;
 }
 
 // Function: listLibraries
@@ -128,7 +133,6 @@ void findBooks(string ISBN)
             cout << booksHeld << endl;
         }
     }
-
     return;
 };
 

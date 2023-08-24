@@ -14,7 +14,6 @@ void BookList::addByISBN(string isbnInput, string libraryName, int copyNumber)
     {
         if (booklist._bookList[i].getISBN() == isbnInput)
         {
-            cout << libraryName << booklist._bookList[i];
             ofstream holdingFile;
             holdingFile.open("holdings.txt", ios::app);
             holdingFile << libraryName << ": " << booklist._bookList[i];

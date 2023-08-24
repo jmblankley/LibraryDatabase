@@ -1,3 +1,1 @@
-1. Add if statements to add'Functions'() to check if the info being input is correct.
-
-2. Fix the else statement in userInput(), might be fixed by item 1
+1. on addHoldings, make it so that when you add a holding it makes a Holding list (which includes the library name it is at, and the copyCount if there are multiple copies.)

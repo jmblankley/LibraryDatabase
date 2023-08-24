@@ -19,6 +19,7 @@ private:
     int _year;
     string _author;
     string _title;
+    int _bookCount;
 
 public:
     // Default Contructor Method for Book Class
@@ -43,10 +44,23 @@ public:
         _title = newTitle;
     };
 
+    // Accessor methods for Book data.
+    string getISBN() const { return _ISBN; }
+    int getYear() const { return _year; }
+    string getAuthor() const { return _author; }
+    string getTitle() const { return _title; }
+
+    bool operator==(const Book &other) const;
+
     // Operator Overload: <<
     // Parameters: ostream(output), and a Book
     // Purpose: Makes it possible to output a Book object to a stream (console/file/etc..)
     friend ostream &operator<<(ostream &os, const Book &book);
+
+    // Operator Overload: >>
+    // Parameters: istream, Book
+    // Purpose:
+    friend istream &operator>>(istream &is, Book &book);
 };
 
 #endif

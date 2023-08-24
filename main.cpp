@@ -6,7 +6,7 @@ PURPOSE: Main file for Library Database project.
 */
 #include "Book.hpp"
 #include "Library.hpp"
-#include "Holding.hpp"
+#include "BookList.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -25,6 +25,9 @@ void addBook()
     cin >> ISBN >> year >> author >> title;
 
     Book book(ISBN, year, author, title);
+
+    ifstream getBooks("books.txt");
+    BookList booklist(getBooks);
 
     ofstream booksFile;
     booksFile.open("books.txt", ios::app);
@@ -60,19 +63,19 @@ void addLibrary()
 // Purpose: Add holding information to specified file
 void addHolding()
 {
-    string ISBN;
+    Book pulledBook;
     string library;
-    int copyCount;
+    string ISBN;
+    // int copyNumber;
 
+    //  user input for ISBN and the library name
     cin >> ISBN >> library;
-    Holding holding(ISBN, library, copyCount);
 
-    ofstream holdingFile;
-    holdingFile.open("holdings.txt", ios::app);
-    holdingFile << holding;
-    holdingFile.close();
+    //  Look through "books.txt" for the matching ISBN
+    ifstream books("books.txt");
+    BookList bookList(books);
 
-    return;
+    bookList.addByISBN(ISBN);
 };
 
 // Function: listBooks
@@ -80,15 +83,19 @@ void addHolding()
 // Purpose: List the books into the console from the books.txt file
 void listBooks()
 {
-    ifstream books;
-    books.open("books.txt");
-    string bookInfo;
-    while (getline(books, bookInfo))
-    {
-        cout << bookInfo << "\n";
-    }
-    return;
+    ifstream getBooks("books.txt");
+    BookList booklist(getBooks);
+
+    cout << booklist;
 };
+
+void listHoldings()
+{
+    ifstream getBooks("holdings.txt");
+    BookList holdinglist(getBooks);
+
+    cout << holdinglist;
+}
 
 // Function: listLibraries
 // Parameters: none
@@ -111,15 +118,12 @@ void listLibraries()
 // Purpose: Find the books in the holdings.txt by the ISBN number
 void findBooks(string ISBN)
 {
-    // cout << ISBN << endl; // debugging line
-
     ifstream holdings;
     holdings.open("holdings.txt");
     string booksHeld;
     while (getline(holdings, booksHeld))
     {
-        // cout << booksHeld << endl; // debugging line
-        if (!booksHeld.find(ISBN)) // Need to figure out how to compare only the ISBN number on the line and not the whole file.
+        if (!booksHeld.find(ISBN))
         {
             cout << booksHeld << endl;
         }
@@ -174,6 +178,10 @@ void userInput()
         {
             listLibraries();
         }
+        if (secondSelector == "h")
+        {
+            listHoldings();
+        }
     }
     if (firstSelector == "f")
     {
@@ -185,6 +193,23 @@ void userInput()
 
 int main(int argc, char *argv[])
 {
+    // Testing accessor methods
+    /*Book testBook("12345", 1999, "Blankley", "YowSauce");
+    string test = testBook.getTitle();
+    cout << test;*/
+
+    /*ifstream bookFile("books.txt");
+
+    BookList booklist(bookFile);
+
+    Book newBook("696969", 1996, "Yartman", "Pooter");
+
+    cout << booklist;
+
+    booklist += newBook;
+
+    cout << booklist;*/
+
     userInput();
 
     return 0;

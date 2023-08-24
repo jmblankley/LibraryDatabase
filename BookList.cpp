@@ -6,7 +6,7 @@ using namespace std;
 // Method: findByISBN
 // Parameters: int (isbn number of boook)
 // Purpose: Return nothing.
-void BookList::addByISBN(string isbnInput)
+void BookList::addByISBN(string isbnInput, string libraryName, int copyNumber)
 {
     ifstream books("books.txt");
     BookList booklist(books);
@@ -14,10 +14,10 @@ void BookList::addByISBN(string isbnInput)
     {
         if (booklist._bookList[i].getISBN() == isbnInput)
         {
-            cout << booklist._bookList[i];
+            cout << libraryName << booklist._bookList[i];
             ofstream holdingFile;
             holdingFile.open("holdings.txt", ios::app);
-            holdingFile << booklist._bookList[i];
+            holdingFile << libraryName << ": " << booklist._bookList[i];
             holdingFile.close();
         }
     }

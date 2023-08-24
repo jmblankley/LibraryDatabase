@@ -66,16 +66,16 @@ void addHolding()
     Book pulledBook;
     string library;
     string ISBN;
-    // int copyNumber;
+    int copyNumber = 1;
 
     //  user input for ISBN and the library name
     cin >> ISBN >> library;
 
     //  Look through "books.txt" for the matching ISBN
     ifstream books("books.txt");
-    BookList bookList(books);
+    BookList bookList(books, library, copyNumber);
 
-    bookList.addByISBN(ISBN);
+    bookList.addByISBN(ISBN, library, copyNumber);
 };
 
 // Function: listBooks

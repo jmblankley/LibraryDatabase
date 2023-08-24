@@ -19,7 +19,8 @@ private:
     int _year;
     string _author;
     string _title;
-    int _bookCount;
+    string _libraryName;
+    int _copyNumber;
 
 public:
     // Default Contructor Method for Book Class
@@ -43,6 +44,16 @@ public:
         _author = newAuthor;
         _title = newTitle;
     };
+
+    Book(string newISBN, int newYear, string newAuthor, string newTitle, string newLibraryName, int newCopyNumber)
+    {
+        _ISBN = newISBN;
+        _year = newYear;
+        _author = newAuthor;
+        _title = newTitle;
+        _libraryName = newLibraryName;
+        _copyNumber = newCopyNumber;
+    }
 
     // Accessor methods for Book data.
     string getISBN() const { return _ISBN; }

@@ -48,6 +48,22 @@ public:
             _bookCount++;
         }
     }
+    BookList(ifstream &bookFile, string libraryName, int copyNumber)
+    {
+        _bookCount = 0;
+        _bookList = new Book[MAX_SIZE];
+
+        Book book;
+        bookFile >> book;
+        _bookList[_bookCount] = book;
+        _bookCount++;
+
+        while (bookFile >> book)
+        {
+            _bookList[_bookCount] = book;
+            _bookCount++;
+        }
+    }
 
     // Accessor Methods
     int getBookCount() const { return _bookCount; }
@@ -55,7 +71,7 @@ public:
     // Method: findByISBN
     // Parameters: int (isbn number of boook)
     // Purpose: Return nothing.
-    void addByISBN(string isbnInput);
+    void addByISBN(string isbnInput, string libraryName, int copyNumber);
 
     // Operator Overlead: +=
     //  Parameters: Book

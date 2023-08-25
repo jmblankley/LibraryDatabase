@@ -1,1 +1,3 @@
 Starting Point: Work on getting the << overload for HoldingList working, this will help you with the findBook function as well as other things.
+
+Next: Figure out how to ensure that the user input is taking in the proper inputs(Book for example needs to take in -> ISBN, year, Author, Title). Return an error message if the input does not match this.

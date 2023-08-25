@@ -19,8 +19,6 @@ private:
     int _year;
     string _author;
     string _title;
-    string _libraryName;
-    int _copyNumber;
 
 public:
     // Default Contructor Method for Book Class
@@ -45,22 +43,15 @@ public:
         _title = newTitle;
     };
 
-    Book(string newISBN, int newYear, string newAuthor, string newTitle, string newLibraryName, int newCopyNumber)
-    {
-        _ISBN = newISBN;
-        _year = newYear;
-        _author = newAuthor;
-        _title = newTitle;
-        _libraryName = newLibraryName;
-        _copyNumber = newCopyNumber;
-    }
-
     // Accessor methods for Book data.
     string getISBN() const { return _ISBN; }
     int getYear() const { return _year; }
     string getAuthor() const { return _author; }
     string getTitle() const { return _title; }
 
+    // Operator Overload: ==
+    // Parameters: Book on left and right side of ==
+    // Purpose: Makes it possible to compare two Book objects
     bool operator==(const Book &other) const;
 
     // Operator Overload: <<

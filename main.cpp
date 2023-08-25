@@ -5,8 +5,11 @@ DATE: 8/22/2023
 PURPOSE: Main file for Library Database project.
 */
 #include "Book.hpp"
-#include "Library.hpp"
 #include "BookList.hpp"
+#include "Library.hpp"
+#include "LibraryList.hpp"
+#include "Holding.hpp"
+#include "HoldingList.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -26,12 +29,20 @@ void addBook()
 
     Book book(ISBN, year, author, title);
 
-    ifstream getBooks("books.txt");
-    BookList booklist(getBooks);
+    ifstream booksFile("books.txt");
+    BookList booklist(booksFile);
+    if (!booklist.checkBookList(ISBN, booklist))
+    {
+        ofstream booksFile;
+        booksFile.open("books.txt", ios::app);
+        booksFile << book;
+        booksFile.close();
+    }
+    else
+    {
+        cout << "Sorry, that book is already in the database!" << endl;
+    }
 
-    ofstream booksFile;
-    booksFile.open("books.txt", ios::app);
-    booksFile << book;
     booksFile.close();
 
     return;
@@ -50,10 +61,20 @@ void addLibrary()
 
     Library library(name, city, zip);
 
-    ofstream libraryFile;
-    libraryFile.open("libraries.txt", ios::app);
-    libraryFile << library;
-    libraryFile.close();
+    ifstream librariesFile("libraries.txt");
+    LibraryList librarylist(librariesFile);
+    if (!librarylist.findByName(name, librarylist))
+    {
+        ofstream libraryFile;
+        libraryFile.open("libraries.txt", ios::app);
+        libraryFile << library;
+        libraryFile.close();
+    }
+    else
+    {
+        cout << "Sorry, that library already is in the database!" << endl;
+    }
+    librariesFile.close();
 
     return;
 };
@@ -61,22 +82,50 @@ void addLibrary()
 // Function: addHolding
 // Parameters: none
 // Purpose: Add holding information to specified file
-/*void addHolding()
+void addHolding()
 {
-    Book pulledBook;
-    string library;
     string ISBN;
-    int copyNumber = 1;
+    string libraryName;
+    Book pulledBook("", 0, "", "");
+    Book holdingBook;
+    Holding holding;
 
-    //  user input for ISBN and the library name
-    cin >> ISBN >> library;
+    cin >> ISBN >> libraryName;
 
-    //  Look through "books.txt" for the matching ISBN
-    ifstream books("books.txt");
-    BookList bookList(books, library, copyNumber);
+    ifstream booksFile("books.txt");
+    BookList bookList(booksFile);
+    if (bookList.checkBookList(ISBN, bookList))
+    {
+        Book newBook = bookList.findByISBN(ISBN, bookList, pulledBook);
+        holdingBook = newBook;
+        ifstream libraryFile("libraries.txt");
+        LibraryList libraryList(libraryFile);
 
-    bookList.addByISBN(ISBN, library, copyNumber);
-};*/
+        if (libraryList.findByName(libraryName, libraryList))
+        {
+            Holding holding(holdingBook, libraryName);
+            ofstream holdingFile;
+            holdingFile.open("holdings.txt", ios::app);
+            holdingFile << holding;
+            holdingFile.close();
+        }
+        else if (!libraryList.findByName(libraryName, libraryList))
+        {
+            cout << "Sorry, that library is not in the database!" << endl;
+            return;
+        }
+        else
+        {
+            return;
+        }
+        libraryFile.close();
+    }
+    else
+    {
+        cout << "Sorry, that book is not in the database!" << endl;
+    }
+    booksFile.close();
+};
 
 // Function: listBooks
 // Parameters: none
@@ -87,53 +136,39 @@ void listBooks()
     BookList booklist(getBooks);
 
     cout << booklist;
-};
 
-// Unneccessary function for testing.
-void listHoldings()
-{
-    ifstream getHoldings;
-    getHoldings.open("holdings.txt");
-    string holdingInfo;
-    while (getline(getHoldings, holdingInfo))
-    {
-        cout << holdingInfo << endl;
-    }
-    return;
-}
+    getBooks.close();
+};
 
 // Function: listLibraries
 // Parameters: none
 // Purpose: List the libraries into the console from the libraries.txt file
 void listLibraries()
 {
-    ifstream libraries;
-    libraries.open("libraries.txt");
-    string libraryInfo;
-    while (getline(libraries, libraryInfo))
-    {
-        cout << libraryInfo << "\n";
-    }
+    ifstream getLibraries("libraries.txt");
+    LibraryList librarylist(getLibraries);
 
-    return;
+    cout << librarylist;
+
+    getLibraries.close();
 };
+
+// Unneccessary function for testing.
+void listHoldings()
+{
+    ifstream getHoldings("holdings.txt");
+    HoldingList holdinglist(getHoldings);
+
+    cout << holdinglist;
+
+    getHoldings.close();
+}
 
 // Function: findBooks
 // Parameters: ISBN
 // Purpose: Find the books in the holdings.txt by the ISBN number
-void findBooks(string ISBN)
-{
-    ifstream holdings;
-    holdings.open("holdings.txt");
-    string booksHeld;
-    while (getline(holdings, booksHeld))
-    {
-        if (!booksHeld.find(ISBN))
-        {
-            cout << booksHeld << endl;
-        }
-    }
-    return;
+void findBooks(string ISBN, BookList booklist){
+    // Need to search through holdings.txt/HoldingList
 };
 
 // Function: userInput
@@ -164,7 +199,7 @@ void userInput()
         }
         else if (secondSelector == "h")
         {
-            // addHolding();
+            addHolding();
         }
         else
         {
@@ -190,7 +225,7 @@ void userInput()
     if (firstSelector == "f")
     {
         cin >> secondSelector;
-        findBooks(secondSelector);
+        // findBooks(secondSelector);
     }
     userInput();
 }

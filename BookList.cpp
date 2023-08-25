@@ -3,47 +3,40 @@
 #include <iostream>
 using namespace std;
 
-<<<<<<< HEAD
 // Method: findByISBN
 // Parameters: int (isbn number of boook)
 // Purpose: Return nothing.
-void BookList::addByISBN(string isbnInput, string libraryName, int copyNumber)
+Book BookList::findByISBN(string isbnInput, BookList booklist, Book book)
 {
-    ifstream books("books.txt");
-    BookList booklist(books);
     for (int i = 0; i < booklist._bookCount; i++)
     {
         if (booklist._bookList[i].getISBN() == isbnInput)
         {
-            ofstream holdingFile;
-            holdingFile.open("holdings.txt", ios::app);
-            holdingFile << libraryName << ": " << booklist._bookList[i];
-            holdingFile.close();
+            string newISBN = booklist._bookList[i].getISBN();
+            int newYear = booklist._bookList[i].getYear();
+            string newAuthor = booklist._bookList[i].getAuthor();
+            string newTitle = booklist._bookList[i].getTitle();
+
+            Book newBook(newISBN, newYear, newAuthor, newTitle);
+
+            book = newBook;
+
+            return book;
         }
     }
 }
 
-=======
->>>>>>> 9c4d1a4 (took out unrealted methods from BookList)
-// Operator Overlead: +=
-//  Parameters: Book
-//  Purpose: Return a copy of the updated Fleet as efficiently as possible
-BookList &BookList::operator+=(const Book &book)
+bool BookList::checkBookList(string isbnInput, BookList booklist)
 {
-    Book emptySpace("", 0, "", "");
-
-    for (int i = 0; i <= _bookCount; i++)
+    for (int i = 0; i < booklist._bookCount; i++)
     {
-        if (_bookList[i] == emptySpace)
+        if (booklist._bookList[i].getISBN() == isbnInput)
         {
-            _bookList[i] = book;
-            _bookCount++;
-            break;
+            return true;
         }
     }
-    return *this;
+    return false;
 }
-
 // Operator Overload: <<
 // Parameters: Reference of type ostream
 // Purpose: return ostream

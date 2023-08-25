@@ -1,10 +1,10 @@
-1. ISBN numbers are unique for this project.
+~~1. ISBN numbers are unique for this project. 
 
-2. If you encounter two of the same ISBN numbers just ignore the new one. j(tell the user that is an error)
+~~2. If you encounter two of the same ISBN numbers just ignore the new one. (tell the user that is an error)
 
-3. Library names are unique. 
+~~3. Library names are unique. 
 
-4. If you encounter two of the same Libraries with the same name just ignore the new one. (tell user that is an error)
+~~4. If you encounter two of the same Libraries with the same name just ignore the new one. (tell user that is an error)
 
 5. >>>a h (duplicate ISBN) (duplicate Library._name) --> create a new copy!
 

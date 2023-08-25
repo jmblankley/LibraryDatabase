@@ -1,3 +1,1 @@
-1. on addHoldings, make it so that when you add a holding it makes a Holding list (which includes the library name it is at, and the copyCount if there are multiple copies.)
-
-2. 
+Starting Point: Work on getting the << overload for HoldingList working, this will help you with the findBook function as well as other things.

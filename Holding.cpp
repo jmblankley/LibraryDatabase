@@ -12,7 +12,7 @@ PURPOSE: Adds functionality to the methods and overloads of the Holding class.
 // Purpose: Makes it possible to output a Holding object to a stream (console/file/etc..)
 ostream &operator<<(ostream &os, const Holding &holding)
 {
-    os << holding._libraryName << ": " << holding.getEntryBook();
+    os << holding._libraryName << " " << holding._book;
     return os;
 }
 
@@ -21,7 +21,6 @@ ostream &operator<<(ostream &os, const Holding &holding)
 // Purpose:
 istream &operator>>(istream &is, Holding &holding)
 {
-    Book book = holding.getEntryBook();
-    is >> holding._libraryName >> book;
+    is >> holding._libraryName >> holding._book;
     return is;
 }

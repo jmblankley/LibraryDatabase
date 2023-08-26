@@ -167,8 +167,9 @@ void listHoldings()
 // Function: findBooks
 // Parameters: ISBN
 // Purpose: Find the books in the holdings.txt by the ISBN number
-void findBooks(string ISBN, BookList booklist){
-    // Need to search through holdings.txt/HoldingList
+void findBooks(string ISBN, HoldingList holdinglist)
+{
+    holdinglist.findByISBN(ISBN, holdinglist);
 };
 
 // Function: userInput
@@ -225,29 +226,28 @@ void userInput()
     if (firstSelector == "f")
     {
         cin >> secondSelector;
-        // findBooks(secondSelector);
+        ifstream getHoldings("holdings.txt");
+        HoldingList holdinglist(getHoldings);
+        findBooks(secondSelector, holdinglist);
+        getHoldings.close();
     }
     userInput();
 }
 
 int main(int argc, char *argv[])
 {
-    // Testing accessor methods
-    /*Book testBook("12345", 1999, "Blankley", "YowSauce");
-    string test = testBook.getTitle();
-    cout << test;*/
+    /*Book testBook("54321", 2000, "Blankley", "Test");
+    string testLibrary = "testingtesting";
+    Holding testHolding(testBook, testLibrary);
 
-    /*ifstream bookFile("books.txt");
+    cout << testHolding.getBook() << endl;
+    cout << testHolding.getLibraryName() << endl;
+    cout << testHolding << endl;
 
-    BookList booklist(bookFile);
+    ifstream getHoldings("holdings.txt");
+    HoldingList holdinglist(getHoldings);
 
-    Book newBook("696969", 1996, "Yartman", "Pooter");
-
-    cout << booklist;
-
-    booklist += newBook;
-
-    cout << booklist;*/
+    cout << holdinglist;*/
 
     userInput();
 

@@ -56,6 +56,17 @@ public:
         }
     }
 
+    // Accessor Methods
+    int getHoldingCount() const { return _holdingCount; }
+    Book getEntryBook() const { return _holdingList->getBook(); }
+    string getEntryBookISBN() const { return _holdingList->getBookISBN(); }
+    string getEntryLibraryName() const { return _holdingList->getLibraryName(); }
+
+    // Method: findByISBN
+    // Parameters: string (isbn number of boook)
+    // Purpose: Return nothing.
+    void findByISBN(string isbnInput, HoldingList holdingList);
+
     // Operator Overload: <<
     // Parameters: Reference of type ostream
     // Purpose: return ostream

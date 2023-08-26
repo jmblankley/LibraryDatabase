@@ -48,8 +48,12 @@ public:
     }
 
     // Accessor Methods
-    Book getEntryBook() const { return _book; }
-    string getEntryLibraryName() const { return _libraryName; }
+    Book getBook() const { return _book; }
+    string getBookISBN() const { return _book.getISBN(); }
+    int getBookYear() const { return _book.getYear(); }
+    string getBookAuthor() const { return _book.getAuthor(); }
+    string getBookTitle() const { return _book.getTitle(); }
+    string getLibraryName() const { return _libraryName; }
 
     // Operator Overload: <<
     // Parameters: ostream(output), and a Holding

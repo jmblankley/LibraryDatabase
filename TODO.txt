@@ -1,1 +1,1 @@
-Starting Point: Add the copyCount variable if there is more than one copy of an ISBN in a library.
+Starting Point: work on Holding and HoldingList

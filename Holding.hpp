@@ -33,7 +33,7 @@ public:
     // Constructor of Holdings Class
     // Parameters: Book, Library, int represting the copyNumber
     // Purpose: Initializes a new holdings with variables passed in
-    Holding(Book newBook, string newLibrary)
+    Holding(Book newBook, string newLibrary, int newCopyNumber)
     {
         string newBookISBN = newBook.getISBN();
         int newBookYear = newBook.getYear();
@@ -45,6 +45,8 @@ public:
         _book = newestBook;
 
         _libraryName = newLibrary;
+
+        _copyNumber = newCopyNumber;
     }
 
     // Accessor Methods
@@ -54,6 +56,7 @@ public:
     string getBookAuthor() const { return _book.getAuthor(); }
     string getBookTitle() const { return _book.getTitle(); }
     string getLibraryName() const { return _libraryName; }
+    int getCopyNumber() const { return _copyNumber; }
 
     // Operator Overload: <<
     // Parameters: ostream(output), and a Holding

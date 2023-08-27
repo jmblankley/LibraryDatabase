@@ -103,11 +103,30 @@ void addHolding()
 
         if (libraryList.findByName(libraryName, libraryList))
         {
-            Holding holding(holdingBook, libraryName);
-            ofstream holdingFile;
-            holdingFile.open("holdings.txt", ios::app);
-            holdingFile << holding;
-            holdingFile.close();
+
+            int copyNumber = 1;
+            Holding holding(holdingBook, libraryName, copyNumber);
+
+            ifstream holdingsFile("holdings.txt");
+            HoldingList holdinglist(holdingsFile);
+            if (!holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
+            {
+                ofstream holdingFile;
+                holdingFile.open("holdings.txt", ios::app);
+                holdingFile << holding;
+                holdingFile.close();
+            }
+            else if (holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
+            {
+                copyNumber = holding.getCopyNumber() + 1;
+                Holding holdingPlusOne(holdingBook, libraryName, copyNumber);
+                // cout << holdingPlusOne << "Plus" << endl;
+                ofstream holdingFile;
+                holdingFile.open("holdings.txt", ios::app);
+                holdingFile << holdingPlusOne;
+                holdingFile.close();
+            }
+            holdingsFile.close();
         }
         else if (!libraryList.findByName(libraryName, libraryList))
         {

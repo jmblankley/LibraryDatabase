@@ -24,7 +24,11 @@ void HoldingList::findByISBN(string isbnInput, HoldingList holdingList)
 
             Holding newHolding(newBook, newLibrary, 1);
 
-            cout << newHolding.getLibraryName() << ": " << newHolding.getBook() << newHolding.getCopyNumber();
+            cout << newHolding.getLibraryName() << ": " << newHolding.getBook();
+            if (newHolding.getCopyNumber() > 1)
+            {
+                cout << newHolding.getCopyNumber();
+            }
         }
     }
 }
@@ -38,6 +42,7 @@ bool HoldingList::checkHoldingList(string libraryName, Book incomingBook, Holdin
     {
         if (holdingList._holdingList[i].getLibraryName() == libraryName && holdingList._holdingList[i].getBook() == incomingBook)
         {
+            // cout << holdingList._holdingCount << endl;
             return true;
         }
     }
@@ -51,7 +56,7 @@ ostream &operator<<(ostream &os, HoldingList holdinglist)
 {
     for (int i = 0; i < holdinglist._holdingCount; i++)
     {
-        os << holdinglist._holdingList[i].getLibraryName() << ": " << holdinglist._holdingList[i].getBook() << holdinglist._holdingList[i].getCopyNumber();
+        os << holdinglist._holdingList[i];
     }
     return os;
 }

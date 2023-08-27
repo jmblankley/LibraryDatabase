@@ -116,7 +116,7 @@ void addHolding()
                 holdingFile << holding;
                 holdingFile.close();
             }
-            else if (holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
+            if (holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
             {
                 copyNumber = holding.getCopyNumber() + 1;
                 Holding holdingPlusOne(holdingBook, libraryName, copyNumber);

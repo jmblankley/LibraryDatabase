@@ -1,1 +1,1 @@
-Starting Point: work on Holding and HoldingList
+Starting Point: work on Holding and HoldingList, specifically the formatting when outputting holding list

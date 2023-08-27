@@ -51,6 +51,7 @@ public:
 
         while (holdingFile >> holding)
         {
+
             _holdingList[_holdingCount] = holding;
             _holdingCount++;
         }

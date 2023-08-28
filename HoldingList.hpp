@@ -71,7 +71,7 @@ public:
     // Method: checkHoldingList
     // Parameters: string libraryName, Book bookInfo, HoldingList holdingList
     // Purpose: to check if any holdings in the file match the incoming holding, and incrementing the copyCounter if it does
-    bool checkHoldingList(string libraryName, Book bookInfo, HoldingList holdingList);
+    Holding checkHoldingList(string libraryName, Book bookInfo, int copyNumber, HoldingList holdingList);
 
     // Operator Overload: <<
     // Parameters: Reference of type ostream

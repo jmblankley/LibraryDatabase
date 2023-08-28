@@ -63,6 +63,7 @@ void addLibrary()
 
     ifstream librariesFile("libraries.txt");
     LibraryList librarylist(librariesFile);
+
     if (!librarylist.findByName(name, librarylist))
     {
         ofstream libraryFile;
@@ -106,26 +107,18 @@ void addHolding()
 
             int copyNumber = 1;
             Holding holding(holdingBook, libraryName, copyNumber);
-
             ifstream holdingsFile("holdings.txt");
             HoldingList holdinglist(holdingsFile);
-            if (!holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
-            {
-                ofstream holdingFile;
-                holdingFile.open("holdings.txt", ios::app);
-                holdingFile << holding;
-                holdingFile.close();
-            }
-            if (holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holdinglist))
-            {
-                copyNumber = holding.getCopyNumber() + 1;
-                Holding holdingPlusOne(holdingBook, libraryName, copyNumber);
-                // cout << holdingPlusOne << "Plus" << endl;
-                ofstream holdingFile;
-                holdingFile.open("holdings.txt", ios::app);
-                holdingFile << holdingPlusOne;
-                holdingFile.close();
-            }
+
+            // Holding newHolding = holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holding.getCopyNumber(), holdinglist);
+
+            // cout << newHolding;
+
+            ofstream holdingFile;
+            holdingFile.open("holdings.txt", ios::app);
+            holdingFile << holding;
+
+            holdingFile.close();
             holdingsFile.close();
         }
         else if (!libraryList.findByName(libraryName, libraryList))
@@ -267,6 +260,11 @@ int main(int argc, char *argv[])
     HoldingList holdinglist(getHoldings);
 
     cout << holdinglist;*/
+
+    /*ifstream getHoldings("holdings.txt");
+    HoldingList holdinglist(getHoldings);
+
+    cout << holdinglist.getHoldingCount() << endl;*/
 
     userInput();
 

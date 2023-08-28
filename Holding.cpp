@@ -13,14 +13,7 @@ PURPOSE: Adds functionality to the methods and overloads of the Holding class.
 ostream &operator<<(ostream &os, const Holding &holding)
 {
 
-    if (holding._copyNumber <= 1)
-    {
-        os << holding._libraryName << " " << holding._book.getISBN() << " " << holding._book.getYear() << " " << holding._book.getAuthor() << " " << holding._book.getTitle() << endl;
-    }
-    else if (holding._copyNumber > 1)
-    {
-        os << holding._libraryName << " " << holding._book.getISBN() << " " << holding._book.getYear() << " " << holding._book.getAuthor() << " " << holding._book.getTitle() << " " << holding._copyNumber << endl;
-    }
+    os << holding._libraryName << " " << holding._book.getISBN() << " " << holding._book.getYear() << " " << holding._book.getAuthor() << " " << holding._book.getTitle() << endl;
 
     return os;
 }
@@ -30,13 +23,8 @@ ostream &operator<<(ostream &os, const Holding &holding)
 // Purpose:
 istream &operator>>(istream &is, Holding &holding)
 {
-    if (holding._copyNumber <= 1)
-    {
-        is >> holding._libraryName >> holding._book;
-    }
-    else if (holding._copyNumber > 1)
-    {
-        is >> holding._libraryName >> holding._book >> holding._copyNumber;
-    }
+
+    is >> holding._libraryName >> holding._book;
+
     return is;
 }

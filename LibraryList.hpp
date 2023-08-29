@@ -63,6 +63,9 @@ public:
     // Purpose: Find the library with specified name, return nothing
     bool findByName(string nameInput, LibraryList librarylist);
 
+    // Operator Overload: <<
+    // Parameters: ostream, LibraryList
+    // Purpose: Enables the use of << to output a LibraryList object
     friend ostream &operator<<(ostream &os, LibraryList librarylist);
 };
 

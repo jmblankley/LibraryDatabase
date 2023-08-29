@@ -18,8 +18,8 @@ bool LibraryList::findByName(string nameInput, LibraryList librarylist)
 }
 
 // Operator Overload: <<
-// Parameters: Reference of type ostream
-// Purpose: return ostream
+// Parameters: ostream, LibraryList
+// Purpose: Enables the use of << to output a LibraryList object
 ostream &operator<<(ostream &os, LibraryList librarylist)
 {
     for (int i = 0; i < librarylist._libraryCount; i++)

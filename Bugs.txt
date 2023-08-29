@@ -1,0 +1,1 @@
+1. If the user inputs "a b ISBN !notAnInt! Author Title" it breaks the adding of the book. It adds that information but, it does not add ones after properly.

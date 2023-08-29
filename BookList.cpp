@@ -5,7 +5,7 @@ using namespace std;
 
 // Method: findByISBN
 // Parameters: int (isbn number of boook)
-// Purpose: Return nothing.
+// Purpose: Returns a copy of Book with updated ISBN, year, author, and title.
 Book BookList::findByISBN(string isbnInput, BookList booklist, Book book)
 {
     for (int i = 0; i < booklist._bookCount; i++)
@@ -26,6 +26,9 @@ Book BookList::findByISBN(string isbnInput, BookList booklist, Book book)
     }
 }
 
+// Method: checkBookList
+// Parameters: string ISBN, BookList to look through
+// Purpose: returns a true if a book in the list's ISBN matches the incoming book's isbn
 bool BookList::checkBookList(string isbnInput, BookList booklist)
 {
     for (int i = 0; i < booklist._bookCount; i++)

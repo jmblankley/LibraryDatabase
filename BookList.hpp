@@ -66,9 +66,12 @@ public:
 
     // Method: findByISBN
     // Parameters: string (isbn number of boook)
-    // Purpose: Return nothing.
+    // Purpose: Returns a copy of Book with updated ISBN, year, author, and title
     Book findByISBN(string isbnInput, BookList bookList, Book book);
 
+    // Method: checkBookList
+    // Parameters: string ISBN, BookList to look through
+    // Purpose: returns a true if a book in the list's ISBN matches the incoming book's isbn
     bool checkBookList(string isbnInput, BookList bookList);
 
     // Operator Overload: <<

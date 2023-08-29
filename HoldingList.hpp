@@ -30,12 +30,6 @@ public:
         _holdingCount = 0;
     }
 
-    /*Holding addHolding()
-    {
-        Book book;
-        string libraryName;
-    }*/
-
     // Constructor of Holding Class
     // Parameters: ISBN number, and library name
     // Purpose: Initializes a new holding with variables passed in
@@ -65,13 +59,8 @@ public:
 
     // Method: findByISBN
     // Parameters: string (isbn number of boook)
-    // Purpose: Return nothing.
+    // Purpose: Print out books with corresponding ISBN numbers and copyNumber associated with the book if there is more than one copy at a library.
     void findByISBN(string isbnInput, HoldingList holdingList);
-
-    // Method: checkHoldingList
-    // Parameters: string libraryName, Book bookInfo, HoldingList holdingList
-    // Purpose: to check if any holdings in the file match the incoming holding, and incrementing the copyCounter if it does
-    Holding checkHoldingList(string libraryName, Book bookInfo, int copyNumber, HoldingList holdingList);
 
     // Operator Overload: <<
     // Parameters: Reference of type ostream

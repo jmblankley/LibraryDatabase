@@ -29,6 +29,12 @@ ostream &operator<<(ostream &os, const Book &book)
 // Purpose:
 istream &operator>>(istream &is, Book &book)
 {
-    is >> book._ISBN >> book._year >> book._author >> book._title;
-    return is;
+    if (is >> book._ISBN >> book._year >> book._author >> book._title)
+    {
+        return is;
+    }
+    else
+    {
+        cout << "Sorry, that was not a valid entry. Please try again." << endl;
+    }
 }

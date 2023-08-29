@@ -9,7 +9,7 @@ PURPOSE: Adds functionality to the methods and overloads for the HoldingList cla
 
 // Method: findByISBN
 // Parameters: string (isbn number of boook)
-// Purpose: Return nothing.
+// Purpose: Print out books with corresponding ISBN numbers and copyNumber associated with the book if there is more than one copy at a library.
 void HoldingList::findByISBN(string isbnInput, HoldingList holdingList)
 {
     for (int i = 0; i < holdingList._holdingCount; i++)

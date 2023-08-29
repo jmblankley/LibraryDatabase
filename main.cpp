@@ -24,7 +24,6 @@ void addBook()
     int year;
     string author;
     string title;
-
     cin >> ISBN >> year >> author >> title;
 
     Book book(ISBN, year, author, title);
@@ -110,10 +109,6 @@ void addHolding()
             ifstream holdingsFile("holdings.txt");
             HoldingList holdinglist(holdingsFile);
 
-            // Holding newHolding = holdinglist.checkHoldingList(holding.getLibraryName(), holding.getBook(), holding.getCopyNumber(), holdinglist);
-
-            // cout << newHolding;
-
             ofstream holdingFile;
             holdingFile.open("holdings.txt", ios::app);
             holdingFile << holding;
@@ -165,17 +160,6 @@ void listLibraries()
     getLibraries.close();
 };
 
-// Unneccessary function for testing.
-void listHoldings()
-{
-    ifstream getHoldings("holdings.txt");
-    HoldingList holdinglist(getHoldings);
-
-    cout << holdinglist;
-
-    getHoldings.close();
-}
-
 // Function: findBooks
 // Parameters: ISBN
 // Purpose: Find the books in the holdings.txt by the ISBN number
@@ -194,48 +178,47 @@ void userInput()
 
     cout << ">>> ";
     cin >> firstSelector;
-    // cout << firstSelector << secondSelector;
-    if (firstSelector == "q")
-    { // stops program
+    if (firstSelector == "q") // stops program
+    {
         return;
     }
-    if (firstSelector == "a")
-    { // adds book, library, or holding
+    if (firstSelector == "a") // adds book, library, or holding depending on the secondSelector
+    {
         cin >> secondSelector;
-        if (secondSelector == "b")
+        if (secondSelector == "b") // adds book
         {
             addBook();
         }
-        else if (secondSelector == "l")
+        else if (secondSelector == "l") // adds library
         {
             addLibrary();
         }
-        else if (secondSelector == "h")
+        else if (secondSelector == "h") // adds holding
         {
             addHolding();
         }
         else
         {
-            cout << "Invalid input, try again." << endl;
+            cout << "Sorry, that was not a valid entry. Please try again." << endl;
         }
     }
-    if (firstSelector == "l")
+    if (firstSelector == "l") // lists out books or libraries depending on secondSelector
     {
         cin >> secondSelector;
-        if (secondSelector == "b")
+        if (secondSelector == "b") // lists books
         {
             listBooks();
         }
-        if (secondSelector == "l")
+        else if (secondSelector == "l") // lists libraries
         {
             listLibraries();
         }
-        if (secondSelector == "h")
+        else
         {
-            listHoldings();
+            cout << "Sorry, that was not a valid entry. Please try again." << endl;
         }
     }
-    if (firstSelector == "f")
+    if (firstSelector == "f") // finds book in a library with second selector being an ISBN number
     {
         cin >> secondSelector;
         ifstream getHoldings("holdings.txt");
@@ -248,24 +231,6 @@ void userInput()
 
 int main(int argc, char *argv[])
 {
-    /*Book testBook("54321", 2000, "Blankley", "Test");
-    string testLibrary = "testingtesting";
-    Holding testHolding(testBook, testLibrary);
-
-    cout << testHolding.getBook() << endl;
-    cout << testHolding.getLibraryName() << endl;
-    cout << testHolding << endl;
-
-    ifstream getHoldings("holdings.txt");
-    HoldingList holdinglist(getHoldings);
-
-    cout << holdinglist;*/
-
-    /*ifstream getHoldings("holdings.txt");
-    HoldingList holdinglist(getHoldings);
-
-    cout << holdinglist.getHoldingCount() << endl;*/
-
     userInput();
 
     return 0;

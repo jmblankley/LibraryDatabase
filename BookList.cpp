@@ -47,6 +47,10 @@ ostream &operator<<(ostream &os, BookList &booklist)
 {
     for (int i = 0; i < booklist._bookCount; i++)
     {
+        if (booklist._bookCount == 0)
+        {
+            cout << "No books in the database." << endl;
+        }
         os << booklist._bookList[i];
     }
     return os;

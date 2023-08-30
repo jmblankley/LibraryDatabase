@@ -24,6 +24,10 @@ ostream &operator<<(ostream &os, LibraryList librarylist)
 {
     for (int i = 0; i < librarylist._libraryCount; i++)
     {
+        if (librarylist._libraryCount == 0)
+        {
+            cout << "No libraries in the database." << endl;
+        }
         os << librarylist._libraryList[i];
     }
     return os;

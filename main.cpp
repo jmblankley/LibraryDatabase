@@ -30,8 +30,6 @@ void addBook()
 
     Book book(ISBN, year, author, title);
 
-    cout << book;
-
     ifstream booksFile("books.txt");
     BookList booklist(booksFile);
     if (!booklist.checkBookList(ISBN, booklist))

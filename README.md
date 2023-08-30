@@ -27,6 +27,11 @@ To list items, use the `l` command followed by:
 - `l` to list libraries
 
 Example:
+```console
+>>>l b
+12345 2000 Smith Database Fun
+54321 1996 Johns C++ Is Awesome
+```
 
 
 ### Add Command
@@ -38,6 +43,15 @@ To add items, use the `a` command followed by:
 - `h`, a Library name, and Book ISBN to add a holding
 
 Examples:
+```console
+>>>a b 12345 2000 Smith Database Fun
+```
+```console
+>>>a l PublicLibrary Ofallon 98762
+```
+```console
+>>>a h 12345 PublicLibrary
+```
 
 
 ### Find Command
@@ -45,6 +59,10 @@ Examples:
 To find current holdings, use the `f` command followed by an ISBN number.
 
 Example:
+```console
+>>>f 12345
+PublicLibrary: 12345 2000 Smith Database Fun Copy Number: 1
+```
 
 
 

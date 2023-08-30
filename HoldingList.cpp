@@ -12,10 +12,14 @@ PURPOSE: Adds functionality to the methods and overloads for the HoldingList cla
 // Purpose: Print out books with corresponding ISBN numbers and copyNumber associated with the book if there is more than one copy at a library.
 void HoldingList::findByISBN(string isbnInput, HoldingList holdingList)
 {
+
+    bool found = false;
+
     for (int i = 0; i < holdingList._holdingCount; i++)
     {
         if (holdingList._holdingList[i].getBookISBN() == isbnInput)
         {
+            found = true;
             Book newBook = holdingList._holdingList[i].getBook();
             string newLibrary = holdingList._holdingList[i].getLibraryName();
 
@@ -34,6 +38,10 @@ void HoldingList::findByISBN(string isbnInput, HoldingList holdingList)
 
             cout << newHolding.getLibraryName() << ": " << newHolding.getBook().getISBN() << " " << newHolding.getBook().getYear() << " " << newHolding.getBook().getAuthor() << " " << newHolding.getBook().getTitle() << " Copy Number: " << copyNumber << endl;
         }
+    }
+    if (!found)
+    {
+        cout << "No holding found with that ISBN." << endl;
     }
 }
 

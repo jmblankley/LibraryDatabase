@@ -29,7 +29,9 @@ ostream &operator<<(ostream &os, const Book &book)
 // Purpose:
 istream &operator>>(istream &is, Book &book)
 {
-    is >> book._ISBN >> book._year >> book._author >> book._title;
+    is >> book._ISBN >> book._year >> book._author;
+    is.ignore();
+    getline(is, book._title);
 
     return is;
 }

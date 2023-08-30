@@ -65,6 +65,7 @@ public:
                 {
                     newBookList[i] = _bookList[i];
                 }
+                delete[] _bookList;
                 _bookList = newBookList;
             }
         }
@@ -90,7 +91,7 @@ public:
     // Operator Overload: <<
     // Parameters: Reference of type ostream
     // Purpose: return ostream
-    friend ostream &operator<<(ostream &os, BookList booklist);
+    friend ostream &operator<<(ostream &os, BookList &booklist);
 };
 
 #endif

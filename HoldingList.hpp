@@ -36,13 +36,16 @@ public:
     // Purpose: Initializes a new holding with variables passed in
     HoldingList(ifstream &holdingFile)
     {
+        _maxSize = 5;
         _holdingList = new Holding[_maxSize];
         _holdingCount = 0;
-        _maxSize = 5;
 
         Holding holding;
+
         holdingFile >> holding;
+
         _holdingList[_holdingCount] = holding;
+
         _holdingCount++;
 
         while (holdingFile >> holding)
@@ -59,6 +62,7 @@ public:
                 {
                     newHoldingList[i] = _holdingList[i];
                 }
+                delete[] _holdingList;
                 _holdingList = newHoldingList;
             }
         }

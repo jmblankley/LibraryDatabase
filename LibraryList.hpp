@@ -62,6 +62,7 @@ public:
                 {
                     newLibraryList[i] = _libraryList[i];
                 }
+                delete[] _libraryList;
                 _libraryList = newLibraryList;
             }
         }

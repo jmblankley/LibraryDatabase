@@ -24,9 +24,13 @@ void addBook()
     int year;
     string author;
     string title;
-    cin >> ISBN >> year >> author >> title;
+    cin >> ISBN >> year >> author;
+    cin.ignore();
+    getline(cin, title);
 
     Book book(ISBN, year, author, title);
+
+    cout << book;
 
     ifstream booksFile("books.txt");
     BookList booklist(booksFile);
@@ -103,10 +107,11 @@ void addHolding()
 
         if (libraryList.findByName(libraryName, libraryList))
         {
-
             int copyNumber = 1;
             Holding holding(holdingBook, libraryName, copyNumber);
+
             ifstream holdingsFile("holdings.txt");
+
             HoldingList holdinglist(holdingsFile);
 
             ofstream holdingFile;

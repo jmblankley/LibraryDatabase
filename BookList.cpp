@@ -43,7 +43,7 @@ bool BookList::checkBookList(string isbnInput, BookList booklist)
 // Operator Overload: <<
 // Parameters: Reference of type ostream
 // Purpose: return ostream
-ostream &operator<<(ostream &os, BookList booklist)
+ostream &operator<<(ostream &os, BookList &booklist)
 {
     for (int i = 0; i < booklist._bookCount; i++)
     {

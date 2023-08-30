@@ -1,19 +1,52 @@
 # Library Database
-
-This is a file based database system. It keeps track of available books, libraries, and holdings of books that libraries have. 
+### Author: Joshua M. Blankley
+### Date: August 30 2023
 
 ## Project Description
 
-This project was built to become more familiar with the needs for a true database system.
+This project was built to become more familiar with the needs for a true database system. It is a file based database system that keeps track of available books, libraries, and holdings of books that libraries have. Note: The files have been left empty so that you can use them with your own data.
+
+## Technologies Used
+
+I built this project using C++ in an Ubuntu VM. 
 
 ## Installation
 
 In the terminal:
-Use make to create an executable called run, then use ./run to run the file. 
+Use make to create an executable called run, then use ./run to run the file.
 
 ## Usage
 
-You can call "l", which is followed by "b" (lists books) or "l" (lists libraries). You can call "a", followed by "b" and book info (ISBN, Year, Author, Title) which then adds the Book to the file; or followed by "l" and library info (Name, City, ZipCode) which then adds a Library to the corresponding file; or followed by "h" and a Library name and Book ISBN which adds a holding to the corresponding file. You can also input "f" followed by an ISBN number to find current holdings which includes the library they are at, the book's info, and copy number.
+The following commands are available for interacting with the application:
+
+### List Command
+
+To list items, use the `l` command followed by:
+
+- `b` to list books
+- `l` to list libraries
+
+Example:
+
+
+### Add Command
+
+To add items, use the `a` command followed by:
+
+- `b` and book info (ISBN, Year, Author, Title) to add a Book
+- `l` and library info (Name, City, ZipCode) to add a Library
+- `h`, a Library name, and Book ISBN to add a holding
+
+Examples:
+
+
+### Find Command
+
+To find current holdings, use the `f` command followed by an ISBN number.
+
+Example:
+
+
 
 ## Development Log
 

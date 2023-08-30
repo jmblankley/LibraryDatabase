@@ -1,10 +1,10 @@
 # Library Database
-### Author: Joshua M. Blankley
-### Date: August 30 2023
+**Author:** Joshua M. Blankley  
+**Date:** August 30, 2023
 
 ## Project Description
 
-This project was built to become more familiar with the needs for a true database system. It is a file based database system that keeps track of available books, libraries, and holdings of books that libraries have. Note: The files have been left empty so that you can use them with your own data.
+This project aims to enhance understanding of the requirements for a comprehensive database system. It is a file-based database system designed to manage information about available books, libraries, and the holdings of books within those libraries. Note: The provided files are intentionally empty to allow usage with your own data.
 
 ## Technologies Used
 
@@ -13,7 +13,8 @@ I built this project using C++ in an Ubuntu VM.
 ## Installation
 
 In the terminal:
-Use make to create an executable called run, then use ./run to run the file.
+1. Use `make` to compile and generate an executable named `run`.
+2. Execute the program using `./run`.
 
 ## Usage
 
@@ -66,20 +67,15 @@ PublicLibrary: 12345 2000 Smith Database Fun Copy Number: 1
 
 
 
+
 ## Development Log
 
-Initialized project. Added Book, Library, and Holding classes. Built constructors and <<, >> overloads for each.
+- Initialized project. Added Book, Library, and Holding classes. Implemented constructors and `<<`, `>>` overloads for each.
+- Added BookList, LibraryList, and HoldingList classes. Fully developed necessary capabilities for Book, BookList, Library, and LibraryList classes. Encountered challenges with HoldingList.
+- Continued struggling with HoldingList.
+- Made significant changes to Holding and HoldingList, resolved issues regarding Library name and Book.
+- Successfully resolved all bugs in Holding and HoldingList. Final tasks involve code cleanup and extensive testing.
+- Cleaned up the code. Conducted testing and identified minor issues.
+- Rectified the minor issues.
+- Revised code for BookList, LibraryList, and HoldingList to utilize dynamically allocated arrays instead of fixed sizes. **PROJECT COMPLETED.**
 
-Added BookList, LibraryList, and HoldingList classes. Built out the full capabilites needed of Book, BookList, Library, and LibraryList classes. Stuggled with HoldingList.
-
-Still struggling with HoldingList. 
-
-Made big changes to Holding and HoldingList got it correctly taking in a Library name and Book. 
-
-Fully fixed Holding and HoldingList bugs. Just need to clean up code and test extensively.
-
-Cleaned up code. Tested and found some minor bugs.
-
-Fixed the minor bugs.
-
-Adjusted code for BookList, LibraryList, and HoldingList to use a dynamically allocated array instead of a set size. PROJECT COMPLETED. 

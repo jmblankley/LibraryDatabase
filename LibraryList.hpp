@@ -1,13 +1,13 @@
 #ifndef _LIBRARY_LIST_HPP_
 #define _LIBRARY_LIST_HPP_
 #include "Library.hpp"
-#define MAX_SIZE 100
 
 class LibraryList
 {
 private:
     Library *_libraryList;
     int _libraryCount;
+    int _maxSize;
 
 public:
     // Defalut Constructor for the LibraryList class
@@ -15,7 +15,8 @@ public:
     // Purpose: To initialize instance variables.
     LibraryList()
     {
-        _libraryList = new Library[MAX_SIZE];
+        _maxSize = 5;
+        _libraryList = new Library[_maxSize];
         _libraryCount = 0;
     }
 
@@ -40,7 +41,8 @@ public:
     // Purpose: To initialize instance variables and update the LibraryList
     LibraryList(ifstream &libraryFile)
     {
-        _libraryList = new Library[MAX_SIZE];
+        _maxSize = 5;
+        _libraryList = new Library[_maxSize];
         _libraryCount = 0;
 
         Library library;
@@ -52,6 +54,16 @@ public:
         {
             _libraryList[_libraryCount] = library;
             _libraryCount++;
+            if (_libraryCount >= _maxSize)
+            {
+                _maxSize = _libraryCount * 2;
+                Library *newLibraryList = new Library[_maxSize];
+                for (int i = 0; i < _libraryCount; i++)
+                {
+                    newLibraryList[i] = _libraryList[i];
+                }
+                _libraryList = newLibraryList;
+            }
         }
     }
 

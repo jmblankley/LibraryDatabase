@@ -1,7 +1,6 @@
 #ifndef _BOOK_LIST_HPP_
 #define _BOOK_LIST_HPP_
 #include "Book.hpp"
-#define MAX_SIZE 100
 using namespace std;
 
 class BookList
@@ -9,6 +8,7 @@ class BookList
 private:
     Book *_bookList;
     int _bookCount;
+    int _maxSize;
 
 public:
     // Defalut Constructor for the BookList class
@@ -16,7 +16,8 @@ public:
     // Purpose: To initialize instance variables.
     BookList()
     {
-        _bookList = new Book[MAX_SIZE];
+        _maxSize = 5;
+        _bookList = new Book[_maxSize];
         _bookCount = 0;
     }
 
@@ -43,7 +44,8 @@ public:
     BookList(ifstream &bookFile)
     {
         _bookCount = 0;
-        _bookList = new Book[MAX_SIZE];
+        _maxSize = 5;
+        _bookList = new Book[_maxSize];
 
         Book book;
         bookFile >> book;
@@ -54,6 +56,17 @@ public:
         {
             _bookList[_bookCount] = book;
             _bookCount++;
+
+            if (_bookCount >= _maxSize)
+            {
+                _maxSize = _bookCount * 2;
+                Book *newBookList = new Book[_maxSize];
+                for (int i = 0; i < _bookCount; i++)
+                {
+                    newBookList[i] = _bookList[i];
+                }
+                _bookList = newBookList;
+            }
         }
     }
 

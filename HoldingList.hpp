@@ -8,7 +8,6 @@ PURPOSE: Creates the HoldingList class for use in main. Defines constructors, me
 #ifndef _HOLDING_HPP_
 #define _HOLDING_HPP_
 #include "Holding.hpp"
-#define MAX_SIZE 100
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,6 +18,7 @@ class HoldingList
 private:
     Holding *_holdingList;
     int _holdingCount;
+    int _maxSize;
 
 public:
     // Default Contructor Method for Holding Class
@@ -26,7 +26,8 @@ public:
     // Purpose: To initialize instance variables.
     HoldingList()
     {
-        _holdingList = new Holding[MAX_SIZE];
+        _maxSize = 5;
+        _holdingList = new Holding[_maxSize];
         _holdingCount = 0;
     }
 
@@ -35,8 +36,9 @@ public:
     // Purpose: Initializes a new holding with variables passed in
     HoldingList(ifstream &holdingFile)
     {
-        _holdingList = new Holding[MAX_SIZE];
+        _holdingList = new Holding[_maxSize];
         _holdingCount = 0;
+        _maxSize = 5;
 
         Holding holding;
         holdingFile >> holding;
@@ -48,6 +50,17 @@ public:
 
             _holdingList[_holdingCount] = holding;
             _holdingCount++;
+
+            if (_holdingCount >= _maxSize)
+            {
+                _maxSize = _holdingCount * 2;
+                Holding *newHoldingList = new Holding[_maxSize];
+                for (int i = 0; i < _holdingCount; i++)
+                {
+                    newHoldingList[i] = _holdingList[i];
+                }
+                _holdingList = newHoldingList;
+            }
         }
     }
 

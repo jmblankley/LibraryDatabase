@@ -4,7 +4,9 @@
 
 ## Project Description
 
-This project aims to enhance understanding of the requirements for a comprehensive database system. It is a file-based database system designed to manage information about available books, libraries, and the holdings of books within those libraries. Note: The provided files are intentionally empty to allow usage with your own data.
+This project aims to enhance understanding of the requirements for a comprehensive database system (file based). It is a file-based database system designed to manage information about available books, libraries, and the holdings of books within those libraries. Note: The provided files are intentionally empty to allow usage with your own data.
+
+This project is fully built in C++ without the use of any relational database for practice purposes. Please do not use this as a functional application as there are many issues with file based database systems.
 
 ## Technologies Used
 
